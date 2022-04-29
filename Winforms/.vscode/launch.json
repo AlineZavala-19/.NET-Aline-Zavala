@@ -4,6 +4,29 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
+        {
+            "name": "Examen2",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceFolder}/Examen2/bin/Debug/net6.0-windows/Examen2.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/Examen2",
+            "stopAtEntry": false,
+            "console": "internalConsole"
+        },
+
+    {
+        "name": "Crud",
+        "type": "coreclr",
+        "request": "launch",
+        "preLaunchTask": "build",
+        "program": "${workspaceFolder}/Crud/bin/Debug/net6.0-windows/Crud.dll",
+        "args": [],
+        "cwd": "${workspaceFolder}",
+        "stopAtEntry": false,
+        "console": "internalConsole"
+    },
     {
         "name": "Calculadora",
         "type": "coreclr",
