@@ -36,6 +36,7 @@ public partial class Form1 : Form
 
         //ComboBox Monedas
         cmbMonedas = new ComboBox();
+        cmbMonedas.Items.Add("Seleccione la moneda a convertir");
         cmbMonedas.Items.Add("USD - Dolar estadounidense");
         cmbMonedas.Items.Add("MXN - Peso mexicano");
         cmbMonedas.Items.Add("CAD - Dolar canadiense");
@@ -61,7 +62,7 @@ public partial class Form1 : Form
         btnCalcular.Text="Calcular";
         btnCalcular.AutoSize=true;
         btnCalcular.Location= new Point(200,150);
-        btnCalcular.Click+= new EventHandler(btnCalcular_Click);
+        btnCalcular.Click+= new EventHandler(btnCalcularClick);
 
         //Etiqueta Conversiones
         lblConversiones= new Label();
@@ -153,13 +154,8 @@ public partial class Form1 : Form
         this.Controls.Add(lblJPY);
         this.Controls.Add(txtJPY);
 
-    }
-    private void btnCalcular_Click(object sender, EventArgs e){
-        Form2 nuevoFormulario = new Form2();
-    }
-
-    private void cmb_ValueChanged(object sender, EventArgs e){
-        //if(cmbMonedas.SelectedIndex!=null){
+    }    private void cmb_ValueChanged(object sender, EventArgs e){
+        if(cmbMonedas.SelectedIndex!=null){
             if(cmbMonedas.SelectedItem.ToString()=="USD - Dolar estadounidense"){
                 lblMXN.Visible=true;
                 txtMXN.Visible=true;
@@ -215,6 +211,95 @@ public partial class Form1 : Form
                 txCAD.Visible=true;
 
             }
-        //}
+        }
+    }
+    private void btnCalcularClick(object sender, EventArgs e){
+        //Form2 nuevoFormulario = new Form2();
+
+        if(cmbMonedas.SelectedItem.ToString()=="USD - Dolar estadounidense"){
+            string calculo= cmbMonedas.SelectedItem.ToString();
+            int mMXN;
+            int mCAD;
+            int mEUR;
+            int mJPY;
+            if(txtMonto.Text!=""){
+                mMXN = Convert.ToInt32(txtMonto.Text);
+                txtMXN.Text="$" + (mMXN*21.23).ToString();
+                mCAD = Convert.ToInt32(txtMonto.Text);
+                txCAD.Text="$" + (mCAD*1.28).ToString();
+                mEUR = Convert.ToInt32(txtMonto.Text);
+                txtEUR.Text= "€" + (mEUR*0.89).ToString();
+                mJPY = Convert.ToInt32(txtMonto.Text);
+                txtJPY.Text="¥" + (mJPY*113.05).ToString();
+            }
+        }
+        if(cmbMonedas.SelectedItem.ToString()=="MXN - Peso mexicano"){
+            string calculo= cmbMonedas.SelectedItem.ToString();
+            int mUSD;
+            int mCAD;
+            int mEUR;
+            int mJPY;
+            if(txtMonto.Text!=""){
+                mUSD = Convert.ToInt32(txtMonto.Text);
+                txtUSD.Text="$" + (mUSD*0.05).ToString();
+                mCAD = Convert.ToInt32(txtMonto.Text);
+                txCAD.Text="$" + (mCAD*0.06).ToString();
+                mEUR = Convert.ToInt32(txtMonto.Text);
+                txtEUR.Text="€" + (mEUR*0.04).ToString();
+                mJPY = Convert.ToInt32(txtMonto.Text);
+                txtJPY.Text="¥" + (mJPY*5.32).ToString();
+            }
+        }
+        if(cmbMonedas.SelectedItem.ToString()=="CAD - Dolar canadiense"){
+            string calculo= cmbMonedas.SelectedItem.ToString();
+            int mUSD;
+            int mMXN;
+            int mEUR;
+            int mJPY;
+            if(txtMonto.Text!=""){
+                mUSD = Convert.ToInt32(txtMonto.Text);
+                txtUSD.Text="$" + (mUSD*0.78).ToString();
+                mMXN = Convert.ToInt32(txtMonto.Text);
+                txtMXN.Text="$" + (mMXN*16.55).ToString();
+                mEUR = Convert.ToInt32(txtMonto.Text);
+                txtEUR.Text="€" + (mEUR*0.69).ToString();
+                mJPY = Convert.ToInt32(txtMonto.Text);
+                txtJPY.Text="¥" + (mJPY*88.12).ToString();
+            }
+        }
+        if(cmbMonedas.SelectedItem.ToString()=="EUR - Euro"){
+            string calculo= cmbMonedas.SelectedItem.ToString();
+            int mUSD;
+            int mMXN;
+            int mCAD;
+            int mJPY;
+            if(txtMonto.Text!=""){
+                mUSD = Convert.ToInt32(txtMonto.Text);
+                txtUSD.Text="$" + (mUSD*1.13).ToString();
+                mMXN = Convert.ToInt32(txtMonto.Text);
+                txtMXN.Text="$" + (mMXN*23.96).ToString();
+                mCAD = Convert.ToInt32(txtMonto.Text);
+                txCAD.Text="$" + (mCAD*1.45).ToString();
+                mJPY = Convert.ToInt32(txtMonto.Text);
+                txtJPY.Text="¥" + (mJPY*127.56).ToString();
+            }
+        }
+        if(cmbMonedas.SelectedItem.ToString()=="JPY - Yen japones"){
+            string calculo= cmbMonedas.SelectedItem.ToString();
+            int mUSD;
+            int mMXN;
+            int mCAD;
+            int mEUR;
+            if(txtMonto.Text!=""){
+                mUSD = Convert.ToInt32(txtMonto.Text);
+                txtUSD.Text="$" + (mUSD*0.0088).ToString();
+                mMXN = Convert.ToInt32(txtMonto.Text);
+                txtMXN.Text="$" + (mMXN*0.1878).ToString();
+                mCAD = Convert.ToInt32(txtMonto.Text);
+                txCAD.Text="$" + (mCAD*0.0113).ToString();
+                mEUR = Convert.ToInt32(txtMonto.Text);
+                txtEUR.Text="€" + (mEUR*0.0078).ToString();
+            }
+        }
     }
 }
